@@ -10,10 +10,13 @@ startBtn.addEventListener('click', () => {
   timerId = setInterval(() => {
         const color = getRandomHexColor();
   document.querySelector('body').style.backgroundColor = color;
-    }, 1000);
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
+}, 1000);
 });
 
  stopBtn.addEventListener("click", () => {
   clearInterval(timerId);
-  
+    stopBtn.disabled = false;
+    startBtn.disabled = true;
 });
