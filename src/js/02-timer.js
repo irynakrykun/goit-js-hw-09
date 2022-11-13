@@ -14,7 +14,6 @@ const refs = {
 startBtn.setAttribute('disabled', '');
 let timerId = null;
  const currentTime = new Date();
-// console.log(currentTime);
 const options = {
     enableTime: true,
     time_24hr: true,
@@ -22,14 +21,12 @@ const options = {
     minuteIncrement: 1,
     onClose(selectedDates) {
         const timeUser = selectedDates[0];
-        // console.log(timeUser);
-        if (timeUser < currentTime) {
-            window.alert("Please choose a date in the future");
+               if (timeUser < currentTime) {
+            alert("Please choose a date in the future");
            
         } else {
             startBtn.removeAttribute('disabled');
-           
-        }
+                   }
     }
 };
 startBtn.addEventListener('click', onTimer);
@@ -37,18 +34,16 @@ startBtn.addEventListener('click', onTimer);
 function onTimer() {
     let timerId = setInterval(() => {
         let finalTime = new Date(inputEl.value) - new Date();
-        console.log(finalTime)
-        if (finalTime >= 0) {
-            let timerMs = convertMs(finalTime);
-         refs.days.textContent =  timerMs.days.toString().padStart(3, '0');
-        refs.hours.textContent = timerMs.hours.toString().padStart(2, '0');
-         refs.minutes.textContent = timerMs.minutes.toString().padStart(2, '0');
-        refs.seconds.textContent  = timerMs.seconds.toString().padStart(2, '0');
-        } else {
-            clearInterval(timerId)
-        }
-    } ,1000)
-    
+        if (finalTime <= 0) { clearInterval(timerId) }
+        let timerMs = convertMs(finalTime);
+        Object.entries(timerMs).forEach(([name, value]) => {
+            refs[name].textContent = addLeadingZero(value)
+        });
+    }, 1000);
+
+    function addLeadingZero(value) {
+        return String(value).padStart(2, "0")
+    }
  }
 
    function convertMs(finalTime) {
