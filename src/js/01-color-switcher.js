@@ -9,14 +9,23 @@ function getRandomHexColor() {
 startBtn.addEventListener('click', () => {
   timerId = setInterval(() => {
         const color = getRandomHexColor();
-  document.querySelector('body').style.backgroundColor = color;
-    startBtn.disabled = false;
-    stopBtn.disabled = true;
+    document.querySelector('body').style.backgroundColor = color;
+         startBtn.disabled = true;
+          stopBtn.disabled = false;
+    // startBtn.setAttribute('disabled', true);
+    //   stopBtn.removeAttribute('disabled');
+
+       
 }, 1000);
 });
 
  stopBtn.addEventListener("click", () => {
-  clearInterval(timerId);
+   clearInterval(timerId);
     stopBtn.disabled = true;
     startBtn.disabled = false;
-});
+  //  stopBtn.setAttribute('disabled', true);
+  //   startBtn.removeAttribute('disabled');
+
+  
+ });
+ 
