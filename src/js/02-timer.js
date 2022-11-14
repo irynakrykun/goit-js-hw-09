@@ -34,7 +34,7 @@ startBtn.addEventListener('click', onTimer);
 function onTimer() {
     let timerId = setInterval(() => {
         let finalTime = new Date(inputEl.value) - new Date();
-        if (finalTime <= 0) { clearInterval(timerId) }
+        if (finalTime <= 1000) { clearInterval(timerId) }
         let timerMs = convertMs(finalTime);
         Object.entries(timerMs).forEach(([name, value]) => {
             refs[name].textContent = addLeadingZero(value)

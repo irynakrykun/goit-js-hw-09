@@ -7,13 +7,12 @@ function getRandomHexColor() {
 
 
 startBtn.addEventListener('click', () => {
+          startBtn.disabled = true;
+          stopBtn.disabled = false;
   timerId = setInterval(() => {
         const color = getRandomHexColor();
     document.querySelector('body').style.backgroundColor = color;
-         startBtn.disabled = true;
-          stopBtn.disabled = false;
-    // startBtn.setAttribute('disabled', true);
-    //   stopBtn.removeAttribute('disabled');
+      
 
        
 }, 1000);
@@ -23,9 +22,6 @@ startBtn.addEventListener('click', () => {
    clearInterval(timerId);
     stopBtn.disabled = true;
     startBtn.disabled = false;
-  //  stopBtn.setAttribute('disabled', true);
-  //   startBtn.removeAttribute('disabled');
-
-  
+   
  });
  
